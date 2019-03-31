@@ -1,9 +1,9 @@
 # SOS
 
-##Organización de las carpetas:
+##Directory organization:
 
-> REST: Directorio con los archivos para la práctica de la API RESTful
+> REST -> Files for API RESTful.
 
-> HD: __Aún por definir__
+> HD -> Files for MR module.
 
-> LSD: __Aún por definir__
+> LSD -> Files for Web Services.
