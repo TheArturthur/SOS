@@ -5,6 +5,6 @@
 REST/JavaApp/.classpath
 REST/JavaApp/.project
 REST/JavaApp/.settings
-REST/memoria.*
-!REST/memoria.pdf
-!REST/memoria.tex
+REST/memoria/*
+!REST/memoria/memoria.pdf
+!REST/memoria/memoria.tex
