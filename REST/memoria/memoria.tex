@@ -1,10 +1,12 @@
 \documentclass[12pt,a4paper, spanish]{article}
 \usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
 \usepackage{setspace}
 \usepackage[
   pdftex,
   pdfauthor={--- Arturo Vidal Peña & Javier Melero Deza ---},
-  pdftitle={--- Práctica RESTful 2018/2019 ---}]{hyperref}
+  pdftitle={--- Práctica RESTful 2018/2019 ---},
+  hidelinks]{hyperref}
 
 % --- IMAGES ---
 \usepackage[pdftex]{graphicx}
@@ -30,6 +32,10 @@
 \date{\underline{\today}}
 % --- TITLE DATA ---
 
+% --- TABLE OF CONTENTS' DOTS
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% --- TABLE OF CONTENTS' DOTS
 
 % --- DOCUMENT ---
 \begin{document}
@@ -38,7 +44,7 @@
 \maketitle
 \thispagestyle{empty}
 \pagenumbering{gobble}
-\renewcommand*\contentsname{Index of contents}
+\renewcommand*\contentsname{Índice de contenidos}
 \tableofcontents
 \pagebreak
 % --- TITLE ---
@@ -46,7 +52,7 @@
 \pagenumbering{arabic}
 
 \section{Resumen del diseño del servicio}
-Tablas de Swagger Editor y diseño de la persistencia de los datos del servicio.
+Tablas de 'Swagger Editor' y diseño de la persistencia de los datos del servicio.
 
 \newpage
 \section{Capturas de la ejecución en un cliente REST (Postman)}
