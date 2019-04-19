@@ -3,13 +3,14 @@ package social.models;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class User {
 	private int id;
 	private String nombre;
 	private int edad;
+	private String nombre_usuario;
 	private String aficiones;
 	private Date fecha_creacion;
 	
@@ -17,10 +18,11 @@ public class User {
 	}
 	
 	
-	public User (int id, String nombre, int edad, String aficiones, Date d) {
+	public User (int id, String nombre, int edad,String nombre_usuario, String aficiones, Date d) {
 		this.id = id;
 		this.nombre = nombre;
 		this.edad = edad;
+		this.nombre_usuario = nombre_usuario;
 		this.aficiones = aficiones;
 		this.fecha_creacion = d;
 	}
@@ -46,9 +48,18 @@ public class User {
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
+	
+	public void setNombre_usuario(String nombre_usuario) {
+		this.nombre_usuario = nombre_usuario;
+	}
+	public String getNombre_usuario() {
+		return nombre_usuario;
+	}
 	public String getAficiones() {
 		return aficiones;
 	}
+	
+	
 	public void setAficiones(String aficiones) {
 		this.aficiones = aficiones;
 	}
