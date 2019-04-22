@@ -10,7 +10,7 @@
 
 % --- IMAGES ---
 \usepackage[pdftex]{graphicx}
-\usepackage{subfig}
+\usepackage{subfigure}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage[usenames,dvipsnames]{color}
@@ -53,7 +53,18 @@
 \pagenumbering{arabic}
 
 \section{Resumen del diseño del servicio}
-Tablas de 'Swagger Editor' y diseño de la persistencia de los datos del servicio.
+La arquitectura de la aplicación consta de una base de datos simple formada por 4 tablas:
+
+\begin{itemize}
+	\item Usuarios
+	\item Mensajes
+	\item Privados
+	\item Amistad
+\end{itemize}
+
+Posteriormente se programan los recursos, modelos y servicios necesarios para cumplir con las especificaciones pedidas utilizando Jersey Restful. \newline
+
+Dicho servidor se ejecuta sobre Apache Maven en \textit{localhost} con puerto 8080. Internamente, la aplicación proporciona servicios desde la clase UserResource utilizando el resto de clases con las estructuras adecuadas para la conexión con la base de datos y posteriormente su conversión a JSON o XML.
 
 \newpage
 \section{Capturas de la ejecución en un cliente REST (Postman)}
@@ -208,6 +219,26 @@ Hay que poner detalles tanto de la invocación como del resultado de la operaci�
 	\includegraphics[width=0.75\textwidth]{images/captura25.jpg}
 	\caption{Método GET para obtener el mensaje con id 4 del usuario con id 3.}
 \end{figure}
+
+\newpage
+\section{ANEXO: Problemas encontrados}
+
+Los fallos encontrados referentes a la Máquina virtual son:
+
+\begin{itemize}
+	\item Con la aplicación Postman, al probar los métodos HTTP.
+	\item Con la aplicación Eclipse, que algunas veces no encontraba las URIs implementadas.
+	\item Con la baja calidad de las capturas de pantalla del SO utilizado (probablemente por la antigüedad del mismo).
+\end{itemize} 
+
+\begin{figure}[H]
+	\centering
+	\subfigure{\includegraphics[width=0.45\textwidth]{images/error1.jpg}}
+	\subfigure{\includegraphics[width=0.45\textwidth]{images/error2.jpg}}
+	\caption{Fallo de la aplicación Postman al probar métodos.}
+\end{figure}
+
+
 
 \end{document}
 % --- DOCUMENT ---
