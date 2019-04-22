@@ -8,3 +8,4 @@ REST/JavaApp/.settings
 REST/memoria/*
 !REST/memoria/memoria.pdf
 !REST/memoria/memoria.tex
+!REST/memoria/images/*
