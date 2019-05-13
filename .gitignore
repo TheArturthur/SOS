@@ -2,10 +2,11 @@
 .idea/
 
 #/REST files:
-REST/JavaApp/.classpath
-REST/JavaApp/.project
-REST/JavaApp/.settings
+REST/RemoteSystemsTempFiles/*
 REST/memoria/*
 !REST/memoria/memoria.pdf
 !REST/memoria/memoria.tex
 !REST/memoria/images/*
+
+#/SW files:
+SW/RemoteSystemsTempFiles/*
