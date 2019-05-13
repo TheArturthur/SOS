@@ -40,15 +40,22 @@ public class UPMCoursesSkeleton{
 
 
 	/**
-	 * Auto generated method signature
+	 * Gets the list of subjects of a certain course.
 	 * 
-	 * @param showCourses 
-	 * @return showCoursesResponse 
+	 * @param showCourses 			contains the course from which the subjects are wanted to be
+	 * 								obtained (1 to 4)
+	 * 								
+	 * @return showCoursesResponse	the list of the existing subjects in the system for the course
+	 * 								If there's no subject, shall return an empty list. 
 	 */
 
 	public ShowCoursesResponse showCourses (ShowCourses showCourses) {
 		//TODO : fill this with the necessary business logic
-		throw new  java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#showCourses");
+		ShowCoursesResponse subjects = new ShowCoursesResponse();
+		
+		
+		
+		return subjects;
 	}
 
 }
