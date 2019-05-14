@@ -29,12 +29,11 @@ public class UPMCoursesSkeleton{
 		//TODO : fill this with the necessary business logic
 		CheckCourseResponse result = new CheckCourseResponse();
 		
-		if (checkCourse.getArgs0() != null){ //Shall it be checking with the existing courses???
+		if(checkCourse.getArgs0() != null /*&& checkCourse.getArgs0().equals(subject_in_system)*/) {
 			result.set_return(true);
 		} else {
 			result.set_return(false);
 		}
-		
 		return result;
 	}
 
@@ -52,8 +51,12 @@ public class UPMCoursesSkeleton{
 	public ShowCoursesResponse showCourses (ShowCourses showCourses) {
 		//TODO : fill this with the necessary business logic
 		ShowCoursesResponse subjects = new ShowCoursesResponse();
-		
-		
+		int course = showCourses.getArgs0();
+		if (showCourses.isArgs0Specified() && course > 0 && course < 5) { 
+		// If the course is specified and between 1 and 4
+			// TODO: fill subjects with the system subjects of course
+			
+		}
 		
 		return subjects;
 	}
