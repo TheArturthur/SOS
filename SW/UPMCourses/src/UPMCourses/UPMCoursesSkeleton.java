@@ -52,7 +52,6 @@ public class UPMCoursesSkeleton{
 		//TODO : fill this with the necessary business logic
 		ShowCoursesResponse subjects = new ShowCoursesResponse();
 
-
 		int course = showCourses.getArgs0();
 		if (showCourses.isArgs0Specified() && course > 0 && course < 5) { 
 			// If the course is specified and between 1 and 4
@@ -60,6 +59,7 @@ public class UPMCoursesSkeleton{
 
 		}
 
-		return subjects;		}
+		return subjects;		
+	}
 
 }
