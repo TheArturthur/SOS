@@ -15,10 +15,11 @@ public class UPMCoursesSkeleton{
 
 
 	/**
-	 * Auto generated method signature
+	 * Checks if the subject in checkCourse exists in the system
 	 * 
-	 * @param checkCourse 
-	 * @return checkCourseResponse 
+	 * @param checkCourse 			contains a String name with the name of the subject
+	 * @return checkCourseResponse 	true if the subject exists
+	 * 								false otherwise
 	 */
 
 	public CheckCourseResponse checkCourse (CheckCourse checkCourse) {
@@ -28,10 +29,13 @@ public class UPMCoursesSkeleton{
 
 
 	/**
-	 * Auto generated method signature
+	 * Shows a list of the subjects related in the system with the course
 	 * 
-	 * @param showCourses 
-	 * @return showCoursesResponse 
+	 * @param showCourses 			contains the course from which the subjects shall be obtained
+	 * 								the course is between 1 and 4
+	 * 
+	 * @return showCoursesResponse	the list of subjects related to the course
+	 * 								may be empty if subjects or course don't exist	
 	 */
 
 	public ShowCoursesResponse showCourses (ShowCourses showCourses) {
