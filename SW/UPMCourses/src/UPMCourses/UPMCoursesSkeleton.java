@@ -15,50 +15,28 @@ public class UPMCoursesSkeleton{
 
 
 	/**
-	 * Checks if the course in CheckCourse object exists.
+	 * Auto generated method signature
 	 * 
-	 * @param checkCourse			checkCourse has String argument called name that specifies
-	 * 								the course name
-	 * @return checkCourseResponse	true: if checkCourse's course name is one of the existing 
-	 * 								courses
-	 * 								
-	 * 								false: otherwise
+	 * @param checkCourse 
+	 * @return checkCourseResponse 
 	 */
 
 	public CheckCourseResponse checkCourse (CheckCourse checkCourse) {
 		//TODO : fill this with the necessary business logic
-		CheckCourseResponse result = new CheckCourseResponse();
-		
-		if(checkCourse.getArgs0() != null /*&& checkCourse.getArgs0().equals(subject_in_system)*/) {
-			result.set_return(true);
-		} else {
-			result.set_return(false);
-		}
-		return result;
+		throw new  java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#checkCourse");
 	}
 
 
 	/**
-	 * Gets the list of subjects of a certain course.
+	 * Auto generated method signature
 	 * 
-	 * @param showCourses 			contains the course from which the subjects are wanted to be
-	 * 								obtained (1 to 4)
-	 * 								
-	 * @return showCoursesResponse	the list of the existing subjects in the system for the course
-	 * 								If there's no subject, shall return an empty list. 
+	 * @param showCourses 
+	 * @return showCoursesResponse 
 	 */
 
 	public ShowCoursesResponse showCourses (ShowCourses showCourses) {
 		//TODO : fill this with the necessary business logic
-		ShowCoursesResponse subjects = new ShowCoursesResponse();
-		int course = showCourses.getArgs0();
-		if (showCourses.isArgs0Specified() && course > 0 && course < 5) { 
-		// If the course is specified and between 1 and 4
-			// TODO: fill subjects with the system subjects of course
-			
-		}
-		
-		return subjects;
+		throw new  java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#showCourses");
 	}
 
 }
