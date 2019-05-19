@@ -37,14 +37,23 @@ public class UserManagementWSSkeleton{
 	 */
 	public LoginResponse login (Login login) {
 		//TODO : fill this with the necessary business logic
-		if(login.equals(null)) {
-			throw new  java.lang.UnsupportedOperationException("Please implement " + 
-				this.getClass().getName() + "#login");
+		LoginResponse result = new LoginResponse();
+		Response response = new Response();
+		
+		if(login.equals(null) || 
+				!login.getArgs0().isNameSpecified() || 
+				!login.getArgs0().isPwdSpecified()) {
+			response.setResponse(false);
+		}else {
+		String userName = login.getArgs0().getName();
+		String userPwd = login.getArgs0().getPwd();
+		
+		
+		
+		response.setResponse(true);
 		}
-		
-		
-		
-		return null;
+		result.set_return(response);
+		return result;
 	}
 
 
