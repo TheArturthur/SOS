@@ -18,7 +18,7 @@ public class User {
 	}
 	
 	
-	public User (int id, String nombre, int edad,String nombre_usuario, String aficiones, Date d) {
+	public User (int id, String nombre, int edad, String nombre_usuario, String aficiones, Date d) {
 		this.id = id;
 		this.nombre = nombre;
 		this.edad = edad;
