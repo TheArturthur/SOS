@@ -1,0 +1,11 @@
+<Context>
+	<Resource name="jdbc/social_bbdd"
+		auth="Container"
+		type="javax.sql.DataSource"
+		username="social_server"
+		password="restuser"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/social_bbdd?useSSL=false"
+		maxActive="6"
+		maxIdle="3"/>
+</Context>

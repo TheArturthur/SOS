@@ -114,6 +114,52 @@
 
 \pagenumbering{arabic}
 
+\section{Diseño de la base de datos}
+El sistema constará de tres partes, el cliente Postman, una base de datos y el servidor. La base de datos se compone de 4 tablas: 
+\begin{itemize}
+	\item Usuarios
+	\item Mensajes
+	\item Privados
+	\item Amistad
+\end{itemize}
+
+Dichas tablas se conectan de la siguiente manera:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{images/bbdd.png}
+\end{figure}
+Donde en \textbf{Privados}, \textit{destinatario} es clave foránea, en \textbf{Mensajes} \textit{id\_usuario} es clave foránea y en \textbf{Amistad} tanto \textit{id\_amistad} como \textit{id\_amigo} son claves dependientes de \textit{id} en \textbf{Usuarios} para determinar la relación. Una vez una parte añade a otra como amigo, se añaden los ids de ambos a la tabla \textbf{Amistad}, e independientemente de cual sea su orden, el sistema esta programado para reconocer una amistad de forma recíproca sin repetir entradas.\\
+
+En cuanto al código, esta estructurado en tres partes, el recurso principal de usuario, los “servicios” que son clases que envuelven listas de objetos con \textit{URL} de dichos objetos, y los modelos, los cuales son enviados y recibidos en formato \textit{JSON} principalmente a base de serializar sus atributos.\\
+
+\textbf{\underline{Models}}:
+\begin{itemize}
+	\item LinkMessage – Estructura de datos que guarda url a mensaje.
+	\item LinkPrivate – Estructura de datos que guarda url a mensaje privado.
+	\item LinkUser – Estructura de datos que guarda url a usuario.
+	\item Message – Mensaje.
+	\item MobileData – Estructura necesaria para dar salida a requerimiento de aplicación móvil.
+	\item Private – Mensaje privado.
+	\item User – Usuario 
+\end{itemize} 
+
+\textbf{\underline{Services}}:
+\begin{itemize}
+	\item message\_service – Estructura que envuelve una lista de urls a mensajes
+	\item private\_service – Estructura que envuelve una lista de urls a privados
+	\item user\_service – Estructura que envuelve una lista de urls a usuarios
+\end{itemize}
+
+Se ha intentado seguir un diseño de \textit{URI} consistente basado en una transición de un contenedor más externo a uno más interno contenido en este último.\\
+
+A la hora de dar salida a los datos, al retornar listas se ha elegido retornar estructuras que contienen referencias y urls a los objetos de la lista en cuestión.
+Se ha intentado programar un cliente pero debido a motivos desconocidos el servidor no detectaba determinadas Request (a pesar de que en Postman si funciona) y por tanto el cliente entraba en interbloqueo.\\
+
+Lo que se ha hecho se ha dejado comentado (el paquete se encuentra dentro del propio proyecto).\\
+
+Todas las funcionalidades y requerimientos han sido probados en Postman.
+
+\newpage
 \section{Resumen del diseño del servicio}
 	\begin{figure}[H]
 		\centering
@@ -234,216 +280,177 @@ El siguiente código se ha realizado usando la herramienta Swagger Editor. El fi
 \section{Capturas de la ejecución en el cliente Postman}
 Hay que poner detalles tanto de la invocación como del resultado de la operación.
 
-\subsection{Métodos de usuarios}
-\subsubsection{POST}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Usuarios/POST/postRaquel.png}
-	\caption{Se añade el usuario 1 de nombre Raquel.}
+	\includegraphics[width=0.75\textwidth]{images/final/1.png}
+	\caption{Se añade el usuario 1 de nombre Rafa.}
 \end{figure}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Usuarios/POST/postJavi.png}
+	\includegraphics[width=0.75\textwidth]{images/final/2.png}
 	\caption{Se añade el usuario 2 de nombre Javi.}
 \end{figure}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Usuarios/POST/postRafa.png}
-	\caption{Se añade el usuario 3 de nombre Rafa.}
+	\includegraphics[width=0.75\textwidth]{images/final/3.png}
+	\caption{Se añade el usuario 3 de nombre Laura.}
 \end{figure}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Usuarios/POST/postMaria.png}
-	\caption{Se añade el usuario 4 de nombre María.}
+	\includegraphics[width=0.75\textwidth]{images/final/4.png}
+	\caption{Se añade el usuario 4 de nombre Jordi.}
 \end{figure}
-\newpage
-\subsubsection{GET}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Usuarios/GET/getUsuarios.png}
-	\caption{Se obtienen todos los usuarios.}
+	\includegraphics[width=0.75\textwidth]{images/final/5.png}
+	\caption{Se obtienen todos los usuarios existentes.}
 \end{figure}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Usuarios/GET/getAfterPut.png}
-	\caption{Obtención del usuario 3 después de ser modificado.}
+	\includegraphics[width=0.75\textwidth]{images/final/6.png}
+	\caption{Se obtiene la información del usuario 1 (Rafa).}
 \end{figure}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Usuarios/GET/getAfterDelete.png}
-	\caption{Se obtienen todos los usuarios después de eliminar el usuario 4 (Figura 10).}
+	\includegraphics[width=0.75\textwidth]{images/final/7.png}
+	\caption{Se modifica parte de la información del usuario 1 (Rafa).}
 \end{figure}
-
-\subsubsection{PUT}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Usuarios/PUT/putRafa.png}
-	\caption{Modificación del nombre de usuario 3.}
+	\includegraphics[width=0.75\textwidth]{images/final/8.png}
+	\caption{Se obtiene la información del usuario 1 (Rafa).}
 \end{figure}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Usuarios/PUT/getAfterPutRafa.png}
-	\caption{Obtención de los datos después de la modificación anterior.}
+	\includegraphics[width=0.75\textwidth]{images/final/9.png}
+	\caption{Se elimina el usuario 4 (Jordi).}
 \end{figure}
-
-\subsubsection{DELETE}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Usuarios/DELETE/deleteMaria.png}
-	\caption{Eliminación del usuario 4.}
+	\includegraphics[width=0.75\textwidth]{images/final/10.png}
+	\caption{Se obtienen todos los usuarios existentes.}
 \end{figure}
-\newpage
-
-\subsection{Métodos de mensajes}
-\subsubsection{POST}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Mensajes/POST/postMensaje1.png}
-	\caption{Creación del mensaje 1 asociado al usuario 1.}
+	\includegraphics[width=0.75\textwidth]{images/final/11.png}
+	\caption{El usuario 1 (Rafa) crea un mensaje (1).}
 \end{figure}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Mensajes/POST/postMensaje2.png}
-	\caption{Creación del mensaje 2 asociado al usuario 2.}
+	\includegraphics[width=0.75\textwidth]{images/final/12.png}
+	\caption{El usuario 2 (Javi) crea un mensaje (2).}
 \end{figure}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Mensajes/POST/postMensaje4.png}
-	\caption{Creación del mensaje 4 asociado al usuario 1.}
+	\includegraphics[width=0.75\textwidth]{images/final/13.png}
+	\caption{El usuario 3 (Laura) crea un mensaje (3).}
 \end{figure}
-\newpage
-\subsubsection{GET}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Mensajes/GET/getMensajes1.png}
-	\caption{Se obtienen todos mensajes asociados al usuario 1.}
+	\includegraphics[width=0.75\textwidth]{images/final/14.png}
+	\caption{El usuario 3 (Laura) crea un mensaje (4).}
 \end{figure}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Mensajes/GET/getMensaje.png}
-	\caption{Obtención del mensaje 1 del usuario 1.}
+	\includegraphics[width=0.75\textwidth]{images/final/15.png}
+	\caption{Se obtienen los mensajes creados por el usuario 3 (Laura).}
 \end{figure}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Mensajes/GET/getAfterPut.png}
-	\caption{Obtención del mensaje 4 después de ser modificado (Figura 17).}
+	\includegraphics[width=0.75\textwidth]{images/final/16.png}
+	\caption{El usuario 3 (Laura) modifica el mensaje 3.}
 \end{figure}
-
-\subsubsection{PUT}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Mensajes/PUT/putMensaje.png}
-	\caption{Modificación del mensaje 4 asociado al usuario 1.}
+	\includegraphics[width=0.75\textwidth]{images/final/17.png}
+	\caption{Se obtiene la información del mensaje 3.}
 \end{figure}
-
-\subsubsection{DELETE}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Mensajes/DELETE/deleteMensaje.png}
-	\caption{Eliminación del mensaje 1 del usuario 1.}
+	\includegraphics[width=0.75\textwidth]{images/final/18.png}
+	\caption{Se elimina el mensaje 3 del usuario 3 (Laura).}
 \end{figure}
-\newpage
-
-\subsection{Métodos de Mensajes Privados}
-\subsubsection{POST}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Privados/POST/postCuartoPrivado.png}
-	\caption{Creación del cuarto mensaje privado del usuario 1 al 3.}
+	\includegraphics[width=0.75\textwidth]{images/final/19.png}
+	\caption{Se obtienen los mensajes creados por el usuario 3 (Laura).}
 \end{figure}
-
-\subsubsection{GET}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Privados/GET/getPrivados.png}
-	\caption{Obtención de todos los mensajes privados escritos por el usuario 3.}
+	\includegraphics[width=0.75\textwidth]{images/final/20.png}
+	\caption{El usuario 3 (Laura) crea un mensaje privado para el usuario 2 (Javi).}
 \end{figure}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Privados/GET/getPrivado3.png}
-	\caption{Obtención del mensaje privado 4 del usuario 3.}
+	\includegraphics[width=0.75\textwidth]{images/final/21.png}
+	\caption{Se obtienen los mensajes privados del usuario 2 (Javi).}
 \end{figure}
-
-\newpage
-\subsection{Métodos de Amistad}
-\subsubsection{POST}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Amistad/POST/postAmigo.png}
-	\caption{Se añade el usuario 3 como amigo del usuario 1.}
+	\includegraphics[width=0.75\textwidth]{images/final/22.png}
+	\caption{Se obtiene la información del mensaje privado 1 del usuario 2 (Javi).}
 \end{figure}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Amistad/POST/postAmigo2.png}
-	\caption{Se añade el usuario 1 como amigo del usuario 2.}
+	\includegraphics[width=0.75\textwidth]{images/final/23.png}
+	\caption{Se añade al usuario 2 (Javi) como amigo del usuario 1 (Rafa).}
 \end{figure}
-
-\newpage
-\subsubsection{GET}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Amistad/GET/getAmigos1.png}
-	\caption{Obtención de todos los usuarios amigos del usuario 1.}
+	\includegraphics[width=0.75\textwidth]{images/final/24.png}
+	\caption{Se añade al usuario 3 (Laura) como amigo del usuario 1 (Rafa).}
 \end{figure}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Amistad/GET/getAmigo3.png}
-	\caption{Obtención de todos los usuarios amigos del usuario 3.}
+	\includegraphics[width=0.75\textwidth]{images/final/25.png}
+	\caption{Se obtienen los amigos del usuario 1 (Rafa).}
 \end{figure}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Amistad/GET/getAfterDelete.png}
-	\caption{Obtención de los amigos del usuario 1 después de eliminar uno de ellos (Figura 27).}
+	\includegraphics[width=0.75\textwidth]{images/final/26.png}
+	\caption{Se obtienen los amigos del usuario 2 (Javi).}
 \end{figure}
-
-\subsubsection{DELETE}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/Amistad/DELETE/removeFriend.png}
-	\caption{Eliminación del usuario 2 de los amigos del usuario 1.}
+	\includegraphics[width=0.75\textwidth]{images/final/27.png}
+	\caption{Se elimina al usuario 1 (Rafa) como amigo del usuario 2 (Javi).}
 \end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{images/final/28.png}
+	\caption{Se obtienen los amigos del usuario 1 (Rafa).}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{images/final/29.png}
+	\caption{Se añade el usuario 1 (Rafa) como amigo del usuario 2 (Javi).}
+\end{figure}
+
 \newpage
 
 \subsection{Obtención de mensajes similar a FaceBook}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/MensajesFacebook/amistadPostParaVerPosts.png}
+	\includegraphics[width=0.75\textwidth]{images/final/fb1.png}
 	\caption{Obtención de los amigos del usuario 1.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/MensajesFacebook/postMensajePrueba.png}
+	\includegraphics[width=0.75\textwidth]{images/final/fb2.png}
 	\caption{Creación de un mensaje del usuario 2.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/MensajesFacebook/getMensajesAmigos.png}
+	\includegraphics[width=0.75\textwidth]{images/final/fb3.png}
 	\caption{Obtención de los mensajes de los amigos del usuario 1.}
 \end{figure}
 
 \subsection{Aplicación móvil}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/AplicacionMovil/movilDisplay.png}
+	\includegraphics[width=0.75\textwidth]{images/final/movil.png}
 	\caption{Obtención de la información del usuario 1 simulando una aplicación móvil.}
 \end{figure}
 \newpage
